@@ -83,8 +83,7 @@ if (opts['test']) {
 } else {
     session = './shield.data.json'
 }
-const { state, saveState } = useSingleFileAuthState(session);
-require("http").createServer((_, res) => res.end("Uptime!")).listen(8080)
+const { state, saveState } = useSingleFileAuthState(session)
 const start = async () => {
     // LOAD PLUGINS
     CFonts.say(`SHIELD`, {
