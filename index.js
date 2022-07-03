@@ -24,6 +24,7 @@ const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, awa
 let package = require('./package.json');
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
+require("http").createServer((_, res) => res.end("Uptime!")).listen(3000)
 var low
 try {
   low = require('lowdb')
