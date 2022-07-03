@@ -24,7 +24,6 @@ const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, awa
 let package = require('./package.json');
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
-require("http").createServer((_, res) => res.end("Uptime!")).listen(3000)
 var low
 try {
   low = require('lowdb')
@@ -86,6 +85,7 @@ if (opts['test']) {
 }
 const { state, saveState } = useSingleFileAuthState(session)
 const start = async () => {
+require("http").createServer((_, res) => res.end("Uptime!")).listen(3000)
     // LOAD PLUGINS
     CFonts.say(`SHIELD`, {
         font: 'shade',
