@@ -37,15 +37,20 @@ print ("""
 ---------------------
         NOTE
        ------
-   INI ADALAH BASE
-     DARI MR_DARK
+   FOLLOWERS BY SHIELD
+   
+   TQ TO: 
+   -SHIELD
+   -PERWIRA
+   -MR_DARK
+   -CAF
 ---------------------
 """)
 perdigay = random.choice(string.ascii_letters)
 #user = input("username akun tumbal\ninput> ")
 #passw = input("password akun tumbal\ninput> ")
-user = f"subscribe_mrdark_{perdigay}"
-passw = f"anjswnjn{perdigay}"
+user = f"by_shield.id_{perdigay}"
+passw = f"anjsjn{perdigay}"
 #XenziGay = input("username yang ingin di tambah follower nya, tanpa @\ninput> ")
 XenziGay = sys.argv[1];
 #time.sleep(2)
