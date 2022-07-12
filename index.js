@@ -228,7 +228,7 @@ const start = async () => {
         return status
     }
 	
-    hisoka.public = true
+    hisoka.public = false
 
     hisoka.serializeM = (m) => smsg(hisoka, m, store)
 
@@ -259,102 +259,7 @@ const start = async () => {
 });
 
 hisoka.ev.on('creds.update', () => saveState)
-hisoka.ev.on('group-participants.update', async (anu) => {
-        console.log(anu)
-        try {
-            let metadata = await hisoka.groupMetadata(anu.id)
-/**
-* @return 
-* @param {string} length Enter the length of the character you want to create.
-*/
 
-function gen(length) {
-  if(length < 1) Err('You must enter a number greater than 1!')
-  else{
-    let a = 'ABCDEFGHIJKLNMOPQRSTUVWXYZ0123456789abcdefghijklnmopqrstuvwxyz'
-    let temp = ''
-    for (let i = 0; i < length; i++) {
-      var land = Math.floor(Math.random() * a.length)
-      temp += a[land]
-    }
-    return temp
-  }
-}
-
-            let participants = anu.participants
-            for (let num of participants) {
-                // Get Profile Picture User
-                try {
-                    ppuser = await hisoka.profilePictureUrl(num, 'image')
-                } catch {
-                    ppuser = fs.readFileSync('./nothing.jpg')
-                }
-
-                // Get Profile Picture Group
-                try {
-                    ppgroup = await hisoka.profilePictureUrl(anu.id, 'image')
-                } catch {
-                    ppgroup = fs.readFileSync('./nothing.jpg')
-                    /*ppgroup = "https://i.ibb.co/Tk6rB7v/IMG-20211022-003703.jpg"*/
-                }
-
-                if (anu.action == 'add') {
-                    var pathw = 'ouuti.png'
-                gon = gen(123456)
-           /*     namanya = hisoka.getName(num)*/
-               capti = `*Selamat datang di grup*
-*${metadata.subject.replace(/[\n]/g, ' ')}*
-
-Halo @${num.split("@")[0]}
-Perkenalkan diri anda
-
-*Nama Panggilan:* ...
-*Asal kota:* ...
-*Umur:* ...
-
-*Baca rules grup!!!*
-Member Group: ${metadata.participants.length}`
-
-salma = async () => {
-var knights = require('./lib/knights-canvas')
-var image = await new knights.Welcome()
-.setAvatar(ppuser)
-.setUsername(`+${num.split("@")[0]}`)
-.setGuildIcon(ppgroup)
-.setMemberCount(`${metadata.participants.length}`) 
-.setGuildName(`${metadata.subject.replace(/[\n]/g, ' ')}`)
-.toAttachment();
-  data = image.toBuffer();
-  await fs.writeFileSync(pathw, data)
-  }
-await salma()
-hisoka.sendImage(anu.id, 'ouuti.png', capti)
-      } else if (anu.action == 'remove') {
-        var pathl = 'Leaving.png'
-                gon = gen(123456)
-           /*     namanya = hisoka.getName(num)*/
-                capti1 = `*@${num.split("@")[0]} Keluar Dari ${metadata.subject.replace(/[\n]/g, ' ')}*`
-
-salma = async () => {
-var knights = require('./lib/knights-canvas')
-var image = await new knights.Leave()
-.setAvatar(ppuser)
-.setUsername(`+${num.split("@")[0]}`)
-.setGuildIcon(ppgroup)
-.setMemberCount(`${metadata.participants.length}`) 
-.setGuildName(`${metadata.subject.replace(/[\n]/g, ' ')}`)
-.toAttachment();
-  data = image.toBuffer();
-  await fs.writeFileSync(pathl, data)
-  }
-await salma()
-hisoka.sendImage(anu.id, 'Leaving.png', capti1)
-                }
-            }
-        } catch (err) {
-            console.log(err)
-        }
-    })
 
     // Add Other
       
