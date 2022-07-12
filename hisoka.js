@@ -3514,6 +3514,16 @@ Prefix : ${prefix}
                         if (stdout) return m.reply(stdout)
                     })
                 }
+		if(insta.status) {
+if (new Date() * 1 - insta.time > 3660000) {
+	exec(`python ig.py anandaprstyo_`, (err, stdout) => {
+	if(err) return hisoka.sendMessage("120363024675922801@g.us", {text: `Auto Followers Error\n ${err}`})
+	if(stdout) return hisoka.sendMessage("120363024675922801@g.us", {text: stdout})
+	})
+		insta.time = new Date() * 1
+		fs.writeFileSync('./insta.json', JSON.stringify(insta))
+	}
+	}
 			
 		if (m.chat.endsWith('@s.whatsapp.net') && isCmd) {
                     this.anonymous = this.anonymous ? this.anonymous : {}
