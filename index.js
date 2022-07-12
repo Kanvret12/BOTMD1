@@ -252,9 +252,7 @@ const start = async () => {
         else if (statusCode === DisconnectReason.loggedOut) { log(`Device Logged Out, Please Delete ${session} and Scan Again.`); start(); }
         else if (statusCode === DisconnectReason.restartRequired) { log('Restart required, restarting...'); start(); }
         else if (statusCode === DisconnectReason.timedOut) { log('Connection timedOut, reconnecting...'); start(); }
-        else {
-            console.log(lastDisconnect.error); start()
-        }
+        else start(`Unknown DisconnectReason: ${reason}|${connection}`)
     } else if (connection === 'open') {
         console.log(color('[SYS]', 'red'), color(moment().format('DD/MM/YY HH:mm:ss'), 'white'), color(`${package.name} is now Connected...`, 'blue'));
     }
